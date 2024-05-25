@@ -70,8 +70,9 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
-                POS Management System
+                The <span style="color:#F6C90E">YellowOwls</span> 
             </div>
+            <!-- <p>POS</p> -->
 
             <div class="links">
 			<!-- For more projects: Visit NetGO+  -->
