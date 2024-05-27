@@ -5,6 +5,6 @@ F6C90E - yellow
 12345
 
 POS DEFAULT black
-#212529 !important
+#212529 !importanttt
 
 Anjor
