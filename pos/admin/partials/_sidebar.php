@@ -98,25 +98,35 @@ while ($admin = $res->fetch_object()) {
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="orders.php">
+              <i class="ni ni-cart text-primary"></i> Orders
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="products.php">
               <i class="ni ni-bullet-list-67 text-primary"></i>Products
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="orders.php">
-              <i class="ni ni-cart text-primary"></i> Orders
+            <a class="nav-link" href="recipes.php">
+              <i class="ni ni-align-left-2 text-primary"></i>Recipes
             </a>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="ingredients.php">
+              <i class="ni ni-basket text-primary"></i> Ingredients
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="payments.php">
               <i class="ni ni-credit-card text-primary"></i> Payments
             </a>
-          </li> -->
-          <!-- <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="receipts.php">
               <i class="fas fa-file-invoice-dollar text-primary"></i> Receipts
             </a>
-          </li> -->
+          </li>
         </ul>
         <!-- Divider -->
         <hr class="my-3">

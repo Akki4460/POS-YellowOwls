@@ -77,7 +77,7 @@
             <div class="links">
 			<!-- For more projects: Visit NetGO+  -->
                 <a href="pos/admin/">Admin Log In</a>
-                <!-- <a href="pos/cashier/">Cashier Log In</a> -->
+                <a href="pos/cashier/">Cashier Log In</a>
                 <!-- <a href="pos/customer">Customer Log In</a> -->
             </div>
         </div>
