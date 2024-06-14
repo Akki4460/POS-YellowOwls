@@ -113,7 +113,7 @@ require_once('partials/_head.php');
                           <input type="text" readonly name="prod_name[]" value="<?php echo $product['prod_name']; ?>" class="form-control">
                         </div>
                         <div class="col-md-4">
-                          <label>Product Price ($)</label>
+                          <label>Product Price (₹)</label>
                           <input type="text" readonly name="prod_price[]" value="<?php echo $product['prod_price']; ?>" class="form-control">
                         </div>
                         <div class="col-md-4">

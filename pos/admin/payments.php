@@ -78,7 +78,7 @@ require_once('partials/_head.php');
                       <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
                       <td><?php echo $order->customer_name; ?></td>
                       <td><?php echo $order->products; ?></td>
-                      <td>$ <?php echo $order->total_price; ?></td>
+                      <td>₹ <?php echo $order->total_price; ?></td>
                       <td><?php if ($order->order_status == '') {
                             echo "<span class='badge badge-danger'>Not Paid</span>";
                           } else {
@@ -93,9 +93,19 @@ require_once('partials/_head.php');
                           <input type="hidden" name="total_price" value="<?php echo $order->total_price; ?>">
                           <input type="hidden" name="order_status" value="<?php echo $order->order_status; ?>">
                          
-                          <button class="btn btn-sm btn-success" type="submit">
+                          <?php if ($order->order_status == 'paid' || $order->order_status == 'Paid') {
+                            echo " <button class='btn btn-sm btn-success' disabled type='submit'>
+                            <i class='fas fa-handshake'></i> Pay Order
+                          </button>";
+                          }else{
+                            echo " <button class='btn btn-sm btn-success' type='submit'>
+                            <i class='fas fa-handshake'></i> Pay Order
+                          </button>";
+                          }
+                          ?>
+                          <!-- <button class="btn btn-sm btn-success" type="submit">
                             <i class="fas fa-handshake"></i> Pay Order
-                          </button>
+                          </button> -->
                         </form>
                         <a href="payments.php?cancel=<?php echo $order->order_code; ?>">
                           <button class="btn btn-sm btn-danger">

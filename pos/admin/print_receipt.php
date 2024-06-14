@@ -82,27 +82,27 @@ require_once('partials/_head.php');
                             <tr>
                                 <td class="col-md-9"><em><?php echo $product->prod_name; ?></em></td>
                                 <td class="col-md-1" style="text-align: center"><?php echo $product->prod_qty; ?></td>
-                                <td class="col-md-1 text-center">$<?php echo $product->prod_price; ?></td>
-                                <td class="col-md-1 text-center">$<?php echo $product->prod_price * $product->prod_qty; ?></td>
+                                <td class="col-md-1 text-center">₹<?php echo $product->prod_price; ?></td>
+                                <td class="col-md-1 text-center">₹<?php echo $product->prod_price * $product->prod_qty; ?></td>
                             </tr>
                         <?php endwhile; ?>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td class="text-right"><strong>Subtotal:</strong></td>
-                            <td class="text-center">$<?php echo $total_price; ?></td>
+                            <td class="text-center">₹<?php echo $total_price; ?></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td class="text-right"><strong>Tax (14%):</strong></td>
-                            <td class="text-center">$<?php echo $total_price * 0.14; ?></td>
+                            <td class="text-center">₹<?php echo $total_price * 0.14; ?></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td class="text-right"><h4><strong>Total:</strong></h4></td>
-                            <td class="text-center text-danger"><h4><strong>$<?php echo $total_price + ($total_price * 0.14); ?></strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong>₹<?php echo $total_price + ($total_price * 0.14); ?></strong></h4></td>
                         </tr>
                     </tbody>
                 </table>

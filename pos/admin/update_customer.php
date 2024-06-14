@@ -8,20 +8,20 @@ check_login();
 //Add Customer
 if (isset($_POST['updateCustomer'])) {
   //Prevent Posting Blank Values
-  if (empty($_POST["customer_phoneno"]) || empty($_POST["customer_name"]) || empty($_POST['customer_email']) || empty($_POST['customer_password'])) {
+  if (empty($_POST["customer_phoneno"]) || empty($_POST["customer_name"])) {
     $err = "Blank Values Not Accepted";
   } else {
     $customer_name = $_POST['customer_name'];
     $customer_phoneno = $_POST['customer_phoneno'];
     $customer_email = $_POST['customer_email'];
-    $customer_password = sha1(md5($_POST['customer_password'])); //Hash This 
+    // $customer_password = sha1(md5($_POST['customer_password'])); //Hash This 
     $update = $_GET['update'];
 
     //Insert Captured information to a database table
-    $postQuery = "UPDATE rpos_customers SET customer_name =?, customer_phoneno =?, customer_email =?, customer_password =? WHERE  customer_id =?";
+    $postQuery = "UPDATE rpos_customers SET customer_name =?, customer_phoneno =?, customer_email =? WHERE  customer_id =?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
-    $rc = $postStmt->bind_param('sssss', $customer_name, $customer_phoneno, $customer_email, $customer_password, $update);
+    $rc = $postStmt->bind_param('ssss', $customer_name, $customer_phoneno, $customer_email, $update);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
@@ -86,7 +86,7 @@ require_once('partials/_head.php');
                       <label>Customer Email</label>
                       <input type="email" name="customer_email" value="<?php echo $cust->customer_email; ?>" class="form-control" value="">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" hidden>
                       <label>Customer Password</label>
                       <input type="password" name="customer_password" class="form-control" value="">
                     </div>

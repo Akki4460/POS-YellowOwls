@@ -43,7 +43,7 @@ while ($prod = $res->fetch_object()) {
       <td><img src='assets/img/products/" . ($prod->prod_img ? $prod->prod_img : 'default.jpg') . "' height='60' width='60' class='img-thumbnail'></td>
       <td>$prod->prod_code</td>
       <td>$prod->prod_name</td>
-      <td>$ $prod->prod_price</td>
+      <td>₹ $prod->prod_price</td>
     </tr>
   ";
 }

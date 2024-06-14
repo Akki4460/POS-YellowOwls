@@ -64,7 +64,7 @@ require_once('partials/_head.php');
                                                 <?php echo $payment->order_code; ?>
                                             </td>
                                             <td>
-                                                $ <?php echo $payment->pay_amt; ?>
+                                            ₹ <?php echo $payment->pay_amt; ?>
                                             </td>
                                             <td class="text-success">
                                                 <?php echo date('d/M/Y g:i', strtotime($payment->created_at)) ?>

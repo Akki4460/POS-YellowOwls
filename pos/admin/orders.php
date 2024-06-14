@@ -1,21 +1,23 @@
 <?php
 session_start();
-include('config/config.php');
-include('config/checklogin.php');
+include ('config/config.php');
+include ('config/checklogin.php');
 check_login();
 
-require_once('partials/_head.php');
+require_once ('partials/_head.php');
 ?>
+
 
 <body>
   <!-- Sidenav -->
-  <?php require_once('partials/_sidebar.php'); ?>
+  <?php require_once ('partials/_sidebar.php'); ?>
   <!-- Main content -->
   <div class="main-content">
     <!-- Top navbar -->
-    <?php require_once('partials/_topnav.php'); ?>
+    <?php require_once ('partials/_topnav.php'); ?>
     <!-- Header -->
-    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header pb-8 pt-5 pt-md-8">
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;"
+      class="header pb-8 pt-5 pt-md-8">
       <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
@@ -31,6 +33,9 @@ require_once('partials/_head.php');
           <div class="card shadow">
             <div class="card-header border-0">
               Available Products
+              <input type="text" id="product-search" class="form-control form-control-sm mt-3 mb-3"
+                placeholder="Search Menu">
+
             </div>
             <div class="table-responsive">
               <form id="product-selection-form" method="POST" action="make_order.php">
@@ -73,7 +78,7 @@ require_once('partials/_head.php');
                             <td><img src='assets/img/products/" . ($prod->prod_img ? $prod->prod_img : 'default.jpg') . "' height='60' width='60' class='img-thumbnail'></td>
                             <td>$prod->prod_code</td>
                             <td>$prod->prod_name</td>
-                            <td>$ $prod->prod_price</td>
+                            <td>₹ $prod->prod_price</td>
                           </tr>
                         ";
                       }
@@ -91,19 +96,14 @@ require_once('partials/_head.php');
                           <td><img src='assets/img/products/" . ($prod->prod_img ? $prod->prod_img : 'default.jpg') . "' height='60' width='60' class='img-thumbnail'></td>
                           <td>$prod->prod_code</td>
                           <td>$prod->prod_name</td>
-                          <td>$ $prod->prod_price</td>
+                          <td>₹ $prod->prod_price</td>
                         </tr>
                       ";
                     }
                     ?>
                   </tbody>
                 </table>
-                <!-- Submit Button -->
-                <div class="row mt-3">
-                  <div class="col">
-                    <button type="button" id="submit-order-btn" class="btn btn-success">Submit Order</button>
-                  </div>
-                </div>
+
                 <!-- Hidden Input Field to Store Selected Products -->
                 <input type="hidden" name="selected_products" id="selected-products-input">
               </form>
@@ -113,8 +113,13 @@ require_once('partials/_head.php');
         <!-- Selected Products -->
         <div class="col-md-6">
           <div class="card shadow">
-            <div class="card-header border-0">
-              Selected Products
+            <div class="card-header border-0 d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="mb-0">Selected Products</h5>
+              </div>
+              <div>
+                <button type="button" id="clear-selected-btn" class="btn btn-danger btn-sm">Clear Selected</button>
+              </div>
             </div>
             <div class="table-responsive">
               <table id="selected-products" class="table align-items-center table-flush">
@@ -131,24 +136,36 @@ require_once('partials/_head.php');
                 </tbody>
               </table>
             </div>
+            <!-- Submit Button -->
+            <div class="row mt-3 m-3">
+              <div class="col">
+                <button type="button" id="submit-order-btn" class="btn btn-success">Submit Order</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Argon Scripts -->
-  <?php require_once('partials/_scripts.php'); ?>
+  <?php require_once ('partials/_scripts.php'); ?>
   <!-- Script for managing product selection and quantity -->
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
+
+      // Handle click event on Clear Selected button
+      $('#clear-selected-btn').click(function () {
+        $('#selected-products tbody').empty(); // Remove all rows from the Selected Products table
+      });
+
       // Handle show/hide functionality for categories
-      $('.toggle-category').click(function() {
+      $('.toggle-category').click(function () {
         var categoryId = $(this).data('category-id');
         $('.' + categoryId).toggle();
       });
 
       // Handle row clicks to select or deselect products
-      $('#product-selection-form tbody').on('click', 'tr.product-row', function() {
+      $('#product-selection-form tbody').on('click', 'tr.product-row', function () {
         var productId = $(this).data('prod-id');
         var prodCode = $(this).data('prod-code');
         var prodName = $(this).data('prod-name');
@@ -168,7 +185,7 @@ require_once('partials/_head.php');
             <tr data-prod-id="${productId}">
               <td>${prodCode}</td>
               <td>${prodName}</td>
-              <td>$ ${prodPrice}</td>
+              <td>₹ ${prodPrice}</td>
               <td class="quantity">1</td>
             </tr>
           `);
@@ -176,22 +193,22 @@ require_once('partials/_head.php');
       });
 
       // Handle click on Submit Order button
-      $('#submit-order-btn').click(function(e) {
+      $('#submit-order-btn').click(function (e) {
         e.preventDefault(); // Prevent default form submission
 
         // Create an array to store the selected products with details
         var selectedProducts = {};
 
         // Get details of selected products
-        $('#selected-products tbody tr').each(function() {
+        $('#selected-products tbody tr').each(function () {
           var productId = $(this).data('prod-id');
           var prodCode = $(this).find('td:eq(0)').text();
           var prodName = $(this).find('td:eq(1)').text();
-          var prodPrice = $(this).find('td:eq(2)').text().replace('$ ', '');
+          var prodPrice = $(this).find('td:eq(2)').text().replace('₹ ', '');
           var quantity = $(this).find('td.quantity').text();
 
           selectedProducts[productId] = {
-            prod_id:productId,
+            prod_id: productId,
             prod_code: prodCode,
             prod_name: prodName,
             prod_price: prodPrice,
@@ -204,6 +221,14 @@ require_once('partials/_head.php');
 
         // Submit the form
         $('#product-selection-form').submit();
+      });
+
+      // Live search functionality
+      $('#product-search').on('keyup', function () {
+        var searchValue = $(this).val().toLowerCase();
+        $('#product-list tr.product-row').filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1);
+        });
       });
     });
   </script>

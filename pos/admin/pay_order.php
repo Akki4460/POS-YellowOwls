@@ -80,7 +80,7 @@ require_once('partials/_head.php');
                 <hr>
                 <div class="form-row">
                   <div class="col-md-6">
-                    <label>Amount ($)</label>
+                    <label>Amount (₹)</label>
                     <?php
                     $order_code = $_POST['order_code'];
                     $customer_id = $_POST['customer_id'];
@@ -99,7 +99,7 @@ require_once('partials/_head.php');
                     <label>Payment Method</label>
                     <select class="form-control" name="pay_method">
                       <option selected>Cash</option>
-                      <option>Paypal</option>
+                      <option>Online</option>
                     </select>
                   </div>
                 </div>
@@ -135,8 +135,8 @@ require_once('partials/_head.php');
                     <tr>
                       <td><?php echo $order->prod_name; ?></td>
                       <td><?php echo $order->prod_qty; ?></td>
-                      <td>$<?php echo $order->prod_price; ?></td>
-                      <td>$<?php echo $total; ?></td>
+                      <td>₹<?php echo $order->prod_price; ?></td>
+                      <td>₹<?php echo $total; ?></td>
                     </tr>
                   <?php } ?>
                 </tbody>
