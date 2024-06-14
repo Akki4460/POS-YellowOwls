@@ -5,12 +5,6 @@ include('config/checklogin.php');
 check_login();
 
 require_once('partials/_head.php');
-
-// Handle search query
-$search_query = '';
-if (isset($_POST['search'])) {
-  $search_query = $_POST['search'];
-}
 ?>
 
 <body>
@@ -37,10 +31,6 @@ if (isset($_POST['search'])) {
           <div class="card shadow">
             <div class="card-header border-0">
               Available Products
-              <!-- Search Form -->
-              <div class="input-group input-group-sm mb-3">
-                <input type="text" id="search-input" name="search" class="form-control" placeholder="Search products">
-              </div>
             </div>
             <div class="table-responsive">
               <form id="product-selection-form" method="POST" action="make_order.php">
@@ -72,10 +62,9 @@ if (isset($_POST['search'])) {
                       echo "<tr class='category-row'><td colspan='4' style='background-color: #f8f9fe; font-weight: bold;'>$category <button type='button' class='btn btn-sm btn-link toggle-category' data-category-id='$category_id'>Show/Hide</button></td></tr>";
 
                       // Fetch products for each category
-                      $ret2 = "SELECT * FROM rpos_products WHERE prod_category = ? AND (prod_name LIKE ? OR prod_code LIKE ?)";
+                      $ret2 = "SELECT * FROM rpos_products WHERE prod_category = ?";
                       $stmt2 = $mysqli->prepare($ret2);
-                      $search_term = '%' . $search_query . '%';
-                      $stmt2->bind_param('sss', $category, $search_term, $search_term);
+                      $stmt2->bind_param('s', $category);
                       $stmt2->execute();
                       $res2 = $stmt2->get_result();
                       while ($prod = $res2->fetch_object()) {
@@ -92,9 +81,8 @@ if (isset($_POST['search'])) {
 
                     // Display uncategorized products under 'Other' category
                     echo "<tr class='category-row'><td colspan='4' style='background-color: #f8f9fe; font-weight: bold;'>Other <button type='button' class='btn btn-sm btn-link toggle-category' data-category-id='Other'>Show/Hide</button></td></tr>";
-                    $ret3 = "SELECT * FROM rpos_products WHERE (prod_category IS NULL OR prod_category = '') AND (prod_name LIKE ? OR prod_code LIKE ?)";
+                    $ret3 = "SELECT * FROM rpos_products WHERE prod_category IS NULL OR prod_category = ''";
                     $stmt3 = $mysqli->prepare($ret3);
-                    $stmt3->bind_param('ss', $search_term, $search_term);
                     $stmt3->execute();
                     $res3 = $stmt3->get_result();
                     while ($prod = $res3->fetch_object()) {
@@ -159,19 +147,6 @@ if (isset($_POST['search'])) {
         $('.' + categoryId).toggle();
       });
 
-      // Handle live search
-      $('#search-input').on('input', function() {
-        var searchQuery = $(this).val();
-        $.ajax({
-          url: 'search_products.php',
-          method: 'POST',
-          data: { search: searchQuery },
-          success: function(response) {
-            $('#product-list').html(response);
-          }
-        });
-      });
-
       // Handle row clicks to select or deselect products
       $('#product-selection-form tbody').on('click', 'tr.product-row', function() {
         var productId = $(this).data('prod-id');
@@ -204,17 +179,28 @@ if (isset($_POST['search'])) {
       $('#submit-order-btn').click(function(e) {
         e.preventDefault(); // Prevent default form submission
 
-        // Create an array to store the selected product IDs
-        var selectedProducts = [];
+        // Create an array to store the selected products with details
+        var selectedProducts = {};
 
-        // Get IDs of selected products
+        // Get details of selected products
         $('#selected-products tbody tr').each(function() {
           var productId = $(this).data('prod-id');
-          selectedProducts.push(productId);
+          var prodCode = $(this).find('td:eq(0)').text();
+          var prodName = $(this).find('td:eq(1)').text();
+          var prodPrice = $(this).find('td:eq(2)').text().replace('$ ', '');
+          var quantity = $(this).find('td.quantity').text();
+
+          selectedProducts[productId] = {
+            prod_id:productId,
+            prod_code: prodCode,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            quantity: quantity
+          };
         });
 
-        // Set the value of the hidden input field with the selected product IDs
-        $('#selected-products-input').val(selectedProducts.join(','));
+        // Set the value of the hidden input field with the selected product details
+        $('#selected-products-input').val(JSON.stringify(selectedProducts));
 
         // Submit the form
         $('#product-selection-form').submit();
@@ -224,4 +210,3 @@ if (isset($_POST['search'])) {
 </body>
 
 </html>
-

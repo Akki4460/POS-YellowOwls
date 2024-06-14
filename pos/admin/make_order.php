@@ -6,8 +6,9 @@ include('config/code-generator.php');
 
 check_login();
 
+$selected_products_array = [];
 if (isset($_POST['selected_products'])) {
-    $selected_products_array = explode(',', $_POST['selected_products']);
+    $selected_products_array = json_decode($_POST['selected_products'], true);
 }
 
 if (isset($_POST['make'])) {
@@ -18,6 +19,8 @@ if (isset($_POST['make'])) {
         $order_code  = $_POST['order_code'];
         $customer_id = $_POST['customer_id'];
         $customer_name = $_POST['customer_name'];
+
+        $postStmt = null; // Initialize the statement variable
 
         // Loop through each product to insert into the database
         foreach ($_POST['prod_id'] as $index => $prod_id) {
@@ -101,33 +104,26 @@ require_once('partials/_head.php');
                 </div>
                 <hr>
                 <?php
-                if (isset($selected_products_array)) {
-                  foreach ($selected_products_array as $prod_id) {
-                    $ret = "SELECT * FROM  rpos_products WHERE prod_id = ?";
-                    $stmt = $mysqli->prepare($ret);
-                    $stmt->bind_param('s', $prod_id);
-                    $stmt->execute();
-                    $res = $stmt->get_result();
-                    while ($prod = $res->fetch_object()) {
+                if (!empty($selected_products_array)) {
+                  foreach ($selected_products_array as $product) {
                 ?>
                       <div class="form-row">
                         <div class="col-md-4">
                           <label>Product Name</label>
-                          <input type="text" readonly name="prod_name[]" value="<?php echo $prod->prod_name; ?>" class="form-control">
+                          <input type="text" readonly name="prod_name[]" value="<?php echo $product['prod_name']; ?>" class="form-control">
                         </div>
                         <div class="col-md-4">
                           <label>Product Price ($)</label>
-                          <input type="text" readonly name="prod_price[]" value="<?php echo $prod->prod_price; ?>" class="form-control">
+                          <input type="text" readonly name="prod_price[]" value="<?php echo $product['prod_price']; ?>" class="form-control">
                         </div>
                         <div class="col-md-4">
                           <label>Product Quantity</label>
-                          <input type="text" name="prod_qty[]" readonly class="form-control" value="<?php echo $prod_qty; ?>">
+                          <input type="text" name="prod_qty[]" class="form-control" value="<?php echo $product['quantity']; ?>">
                         </div>
-                        <input type="hidden" name="prod_id[]" value="<?php echo $prod->prod_id; ?>" class="form-control">
+                        <input type="hidden" name="prod_id[]" value="<?php echo $product['prod_id']; ?>" class="form-control">
                       </div>
                       <br>
                 <?php
-                    }
                   }
                 }
                 ?>
