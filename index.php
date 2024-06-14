@@ -70,7 +70,7 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
-                The <span style="color:#F6C90E">YellowOwls</span> 
+                The <span style="color:#F6C90E">YellowOwl</span> 
             </div>
             <!-- <p>POS</p> -->
 

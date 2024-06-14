@@ -1,8 +1,8 @@
 <?php
 session_start();
-include('config/config.php');
-include('config/checklogin.php');
-include('config/code-generator.php');
+include ('config/config.php');
+include ('config/checklogin.php');
+include ('config/code-generator.php');
 
 check_login();
 if (isset($_POST['addProduct'])) {
@@ -11,18 +11,19 @@ if (isset($_POST['addProduct'])) {
     $err = "Blank Values Not Accepted";
   } else {
     $prod_id = $_POST['prod_id'];
-    $prod_code  = $_POST['prod_code'];
+    $prod_code = $_POST['prod_code'];
     $prod_name = $_POST['prod_name'];
+    $prod_category = $_POST['prod_category'];
     $prod_img = $_FILES['prod_img']['name'];
     move_uploaded_file($_FILES["prod_img"]["tmp_name"], "assets/img/products/" . $_FILES["prod_img"]["name"]);
     $prod_desc = $_POST['prod_desc'];
     $prod_price = $_POST['prod_price'];
 
     //Insert Captured information to a database table
-    $postQuery = "INSERT INTO rpos_products (prod_id, prod_code, prod_name, prod_img, prod_desc, prod_price ) VALUES(?,?,?,?,?,?)";
+    $postQuery = "INSERT INTO rpos_products (prod_id, prod_code, prod_name, prod_category, prod_img, prod_desc, prod_price ) VALUES(?,?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
-    $rc = $postStmt->bind_param('ssssss', $prod_id, $prod_code, $prod_name, $prod_img, $prod_desc, $prod_price);
+    $rc = $postStmt->bind_param('sssssss', $prod_id, $prod_code, $prod_name, $prod_category, $prod_img, $prod_desc, $prod_price);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
@@ -32,23 +33,24 @@ if (isset($_POST['addProduct'])) {
     }
   }
 }
-require_once('partials/_head.php');
+require_once ('partials/_head.php');
 ?>
 
 <body>
   <!-- Sidenav -->
   <?php
-  require_once('partials/_sidebar.php');
+  require_once ('partials/_sidebar.php');
   ?>
   <!-- Main content -->
   <div class="main-content">
     <!-- Top navbar -->
     <?php
-    require_once('partials/_topnav.php');
+    require_once ('partials/_topnav.php');
     ?>
     <!-- Header -->
-    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
-    <span class="mask bg-gradient-dark opacity-8"></span>
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;"
+      class="header  pb-8 pt-5 pt-md-8">
+      <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
         </div>
@@ -73,7 +75,8 @@ require_once('partials/_head.php');
                   </div>
                   <div class="col-md-6">
                     <label>Product Code</label>
-                    <input type="text" name="prod_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>" class="form-control" value="">
+                    <input type="text" name="prod_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>"
+                      class="form-control" value="">
                   </div>
                 </div>
                 <hr>
@@ -82,11 +85,23 @@ require_once('partials/_head.php');
                     <label>Product Image</label>
                     <input type="file" name="prod_img" class="btn btn-outline-success form-control" value="">
                   </div>
+
                   <div class="col-md-6">
                     <label>Product Price</label>
                     <input type="text" name="prod_price" class="form-control" value="">
                   </div>
-                </div>
+                  </div>
+                  <hr>
+                  <div class="form-row">
+                    <div class="col-md-6">
+                      <label>Product Category</label>
+                      <input type="text" name="prod_category" class="form-control" value="">
+                    </div>
+                    <div class="col-md-6" hidden>
+                      <label></label>
+                      <input type="text" name="" class="form-control" value="">
+                    </div>
+                  </div>
                 <hr>
                 <div class="form-row">
                   <div class="col-md-12">
@@ -107,13 +122,13 @@ require_once('partials/_head.php');
       </div>
       <!-- Footer -->
       <?php
-      require_once('partials/_footer.php');
+      require_once ('partials/_footer.php');
       ?>
     </div>
   </div>
   <!-- Argon Scripts -->
   <?php
-  require_once('partials/_scripts.php');
+  require_once ('partials/_scripts.php');
   ?>
 </body>
 

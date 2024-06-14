@@ -108,16 +108,6 @@ while ($admin = $res->fetch_object()) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recipes.php">
-              <i class="ni ni-align-left-2 text-primary"></i>Recipes
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ingredients.php">
-              <i class="ni ni-basket text-primary"></i> Ingredients
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="payments.php">
               <i class="ni ni-credit-card text-primary"></i> Payments
             </a>

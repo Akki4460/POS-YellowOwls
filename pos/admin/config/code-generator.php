@@ -22,9 +22,15 @@
     $ing_id  = bin2hex(random_bytes('5'));
     $orderid = bin2hex(random_bytes('5'));
     $payid = bin2hex(random_bytes('3'));
-
+    function generateCode($length = 6) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $code = '';
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $code;
+    }
 
     $length = 10;
     $mpesaCode = substr(str_shuffle("Q1W2E3R4T5Y6U7I8O9PLKJHGFDSAZXCVBNM"),1,$length);
     
-?>
