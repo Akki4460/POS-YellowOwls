@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="MartDevelopers Inc">
-    <title>Restaurant Point Of Sale </title>
+    <title>YellowOwl POS </title>
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16x16.png">
     <link rel="manifest" href="assets/img/icons/site.webmanifest">
@@ -23,6 +23,9 @@
     <!-- Argon CSS -->
     <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
     <script src="assets/js/swal.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
+
     <!--Load Swal-->
     <?php if (isset($success)) { ?>
         <!--This code for injecting success alert-->

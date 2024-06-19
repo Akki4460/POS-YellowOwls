@@ -29,7 +29,7 @@ if (isset($_POST['addCustomer'])) {
     
     //declare a varible which will be passed to alert function
     if ($postStmt) {
-      $success = "Customer Added" && header("refresh:1; url=customes.php");
+      $success = "Customer Added" && header("refresh:1; url=orders.php");
     } else {
       $err = "Please Try Again Or Try Later";
     }

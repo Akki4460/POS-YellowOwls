@@ -92,9 +92,9 @@ require_once('partials/_head.php');
                                 }
                                 ?>
                                 <div class="card-body p-2">
-                                  <h6 class="card-title mb-1"><?php echo $prod->prod_name; ?></h6>
+                                  <h4 class="card-title mb-1"><?php echo $prod->prod_name; ?></h4>
                                   <p class="card-text small mb-2">Code: <?php echo $prod->prod_code; ?></p>
-                                  <p class="card-text small mb-2">Price: ₹ <?php echo $prod->prod_price; ?></p>
+                                  <p class="card-text  mb-2">Price: ₹ <?php echo $prod->prod_price; ?></p>
                                   <div class="d-flex justify-content-between">
                                     <a href="products.php?delete=<?php echo $prod->prod_id; ?>" class="btn btn-sm btn-danger">
                                       <i class="fas fa-trash"></i> Delete

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 02:57 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 19, 2024 at 01:43 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `rpos_admin` (
 --
 
 INSERT INTO `rpos_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
-('10e0b6dc958adfb5b094d8935a13aeadbe783c25', 'System Admin', 'admin@mail.com', '10470c3b4b1fed12c3baac014be15fac67c6e815');
+('10e0b6dc958adfb5b094d8935a13aeadbe783c25', 'Admin', 'admin@mail.com', '10470c3b4b1fed12c3baac014be15fac67c6e815');
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,6 @@ CREATE TABLE `rpos_customers` (
   `customer_name` varchar(200) NOT NULL,
   `customer_phoneno` varchar(200) NOT NULL,
   `customer_email` varchar(200) NOT NULL,
-  `customer_password` varchar(200) NOT NULL,
   `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -60,44 +59,25 @@ CREATE TABLE `rpos_customers` (
 -- Dumping data for table `rpos_customers`
 --
 
-INSERT INTO `rpos_customers` (`customer_id`, `customer_name`, `customer_phoneno`, `customer_email`, `customer_password`, `created_at`) VALUES
-('06549ea58afd', 'Ana J. Browne', '4589698780', 'anaj@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:48.523820'),
-('1fc1f694985d', 'Jane Doe', '2145896547', 'janed@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:39:13.076592'),
-('27e4a5bc74c2', 'Tammy R. Polley', '4589654780', 'tammy@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:37:47.049438'),
-('29c759d624f9', 'Trina L. Crowder', '5896321002', 'trina@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 13:16:18.927595'),
-('35135b319ce3', 'Christine Moore', '7412569698', 'customer@mail.com', '10470c3b4b1fed12c3baac014be15fac67c6e815', '2022-09-12 10:14:03.079533'),
-('3859d26cd9a5', 'Louise R. Holloman', '7856321000', 'holloman@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:12.149280'),
-('57b7541814ed', 'Howard W. Anderson', '8745554589', 'howard@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 08:35:10.959590'),
-('7c8f2100d552', 'Melody E. Hance', '3210145550', 'melody@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:23.996068'),
-('9c7fcc067bda', 'Delbert G. Campbell', '7850001256', 'delbert@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:56.944364'),
-('9f6378b79283', 'William C. Gallup', '7145665870', 'william@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:26.507932'),
-('d0ba61555aee', 'Jamie R. Barnes', '4125556587', 'jamie@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:36:59.643216'),
-('d7c2db8f6cbf', 'Victor A. Pierson', '1458887896', 'victor@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:37:21.568155'),
-('e711dcc579d9', 'Julie R. Martin', '3245557896', 'julie@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:33.397498'),
-('fe6bb69bdd29', 'Brian S. Boucher', '1020302055', 'brians@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:29.591980');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rpos_ingredients`
---
-
-CREATE TABLE `rpos_ingredients` (
-  `ing_id` varchar(200) NOT NULL,
-  `ing_name` varchar(200) NOT NULL,
-  `ing_size` varchar(200) DEFAULT NULL,
-  `ing_quantity` varchar(200) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `rpos_ingredients`
---
-
-INSERT INTO `rpos_ingredients` (`ing_id`, `ing_name`, `ing_size`, `ing_quantity`) VALUES
-('0b8edbcee5', 'chicken', '1000', ''),
-('6940b2eaef', 'bread', '0', '25'),
-('d3d740a013', 'paneer', '100', ''),
-('d577acb864', 'onion', '30', '');
+INSERT INTO `rpos_customers` (`customer_id`, `customer_name`, `customer_phoneno`, `customer_email`, `created_at`) VALUES
+('06549ea58afd', 'Ana J. Browne', '4589698780', 'anaj@mail.com', '2022-09-03 12:39:48.523820'),
+('1da1f018cec0', 'Anjor', '7049242133', '', '2024-06-17 07:49:03.912129'),
+('1fc1f694985d', 'Jane Doe', '2145896547', 'janed@mail.com', '2022-09-03 13:39:13.076592'),
+('27e4a5bc74c2', 'Tammy R. Polley', '4589654780', 'tammy@mail.com', '2022-09-03 12:37:47.049438'),
+('29c759d624f9', 'Trina L. Crowder', '5896321002', 'trina@mail.com', '2022-09-03 13:16:18.927595'),
+('35135b319ce3', 'Christine Moore', '7412569698', 'customer@mail.com', '2022-09-12 10:14:03.079533'),
+('3859d26cd9a5', 'Louise R. Holloman', '7856321000', 'holloman@mail.com', '2022-09-03 12:38:12.149280'),
+('3df17d13c4ac', 'Akhilesh Bhosale', '8847727212', '', '2024-06-18 07:18:26.410837'),
+('57b7541814ed', 'Howard W. Anderson', '8745554589', 'howard@mail.com', '2022-09-03 08:35:10.959590'),
+('7c8f2100d552', 'Melody E. Hance', '3210145550', 'melody@mail.com', '2022-09-03 13:16:23.996068'),
+('9c7fcc067bda', 'Delbert G. Campbell', '7850001256', 'delbert@mail.com', '2022-09-03 12:38:56.944364'),
+('9e5e95a9010c', 'Akhilesh Bhosale', '9732873282', 'akki@gmail.com', '2024-06-14 18:27:57.569953'),
+('9f6378b79283', 'William C. Gallup', '7145665870', 'william@mail.com', '2022-09-03 12:39:26.507932'),
+('cc3140873376', 'nita', '213213213', '', '2024-06-17 18:30:40.086033'),
+('d0ba61555aee', 'Jamie R. Barnes', '4125556587', 'jamie@mail.com', '2022-09-03 12:36:59.643216'),
+('d7c2db8f6cbf', 'Victor A. Pierson', '1458887896', 'victor@mail.com', '2022-09-03 12:37:21.568155'),
+('e711dcc579d9', 'Julie R. Martin', '3245557896', 'julie@mail.com', '2022-09-03 12:38:33.397498'),
+('fe6bb69bdd29', 'Brian S. Boucher', '1020302055', 'brians@mail.com', '2022-09-03 13:16:29.591980');
 
 -- --------------------------------------------------------
 
@@ -124,20 +104,9 @@ CREATE TABLE `rpos_orders` (
 
 INSERT INTO `rpos_orders` (`order_id`, `order_code`, `customer_id`, `customer_name`, `prod_id`, `prod_name`, `prod_price`, `prod_qty`, `order_status`, `created_at`) VALUES
 ('019661e097', 'AEHM-0653', '06549ea58afd', 'Ana J. Browne', 'bd200ef837', 'Turkish Coffee', '8', '1', 'Paid', '2022-09-03 13:26:00.389027'),
-('10031e0375', 'JEAT-7583', '1fc1f694985d', 'Jane Doe', 'e769e274a3', 'Frappuccino', '3', '2', 'Paid', '2024-05-02 13:56:29.166697'),
-('49c1bd8086', 'IUSP-9453', 'fe6bb69bdd29', 'Brian S. Boucher', 'd57cd89073', 'Country Fried Steak', '10', '1', 'Paid', '2022-09-03 11:50:40.812796'),
-('514ada5047', 'OTEV-8532', '3859d26cd9a5', 'Louise R. Holloman', '0c4b5c0604', 'Spaghetti Bolognese', '15', '1', 'Paid', '2022-09-03 13:13:39.042869'),
-('6466fd5ee5', 'COXP-6018', '7c8f2100d552', 'Melody E. Hance', '31dfcc94cf', 'Buffalo Wings', '11', '2', 'Paid', '2022-09-03 12:17:44.680896'),
-('80ab270866', 'JFMB-0731', '35135b319ce3', 'Christine Moore', '97972e8d63', 'Irish Coffee', '11', '1', 'Paid', '2022-09-04 16:37:03.716697'),
-('8815e7edfc', 'QOEH-8613', '29c759d624f9', 'Trina L. Crowder', '2b976e49a0', 'Cheeseburger', '3', '3', 'Paid', '2022-09-03 12:02:32.985451'),
-('917e38153d', 'GHTD-9273', '27e4a5bc74c2', 'Tammy R. Polley', '06dc36c1be', 'Philly Cheesesteak', '7', '2', '', '2024-06-06 06:36:01.597358'),
-('9906ca254f', 'ESHB-7103', '35135b319ce3', 'Christine Moore', '97972e8d63', 'Irish Coffee', '11', '2', '', '2024-05-02 13:56:17.575223'),
-('a27f1d87be', 'EJKA-4501', '35135b319ce3', 'Christine Moore', 'ec18c5a4f0', 'Corn Dogs', '4', '2', 'Paid', '2022-09-04 16:31:54.581984'),
-('a74337db7e', 'ZPXD-6951', 'e711dcc579d9', 'Julie R. Martin', 'a5931158fe', 'Pulled Pork', '8', '2', 'Paid', '2022-09-03 13:12:47.079248'),
-('af52d0022d', 'FNAB-9142', '35135b319ce3', 'Christine Moore', '2fdec9bdfb', 'Jambalaya', '9', '2', 'Paid', '2022-09-04 16:32:14.949302'),
-('b68b7e56c5', 'GHAW-4071', '35135b319ce3', 'Christine Moore', 'bd200ef837', 'Turkish Coffee', '8', '', '', '2024-05-02 14:03:39.340903'),
-('c051fc38eb', 'ONSY-2465', '57b7541814ed', 'Howard W. Anderson', '826e6f687f', 'Margherita Pizza', '12', '1', 'Paid', '2022-09-03 08:35:50.570496'),
-('fc79a55455', 'INHG-0875', '9c7fcc067bda', 'Delbert G. Campbell', '3adfdee116', 'Enchiladas', '10', '1', 'Paid', '2022-09-04 16:35:22.539542');
+('140d08d7b3', 'OSQR-5218', '1fc1f694985d', 'Jane Doe', '8e23aebda6', 'Whole Wheat Bread', '10', '1', '', '2024-06-19 09:10:44.382968'),
+('7d711cfefe', 'PFCO-8640', '1da1f018cec0', 'Anjor', '005018bc24', 'Chicken Loaded Nachos', '110', '1', 'paid', '2024-06-19 10:42:36.964796'),
+('dea4df8be8', 'PFCO-8640', '1da1f018cec0', 'Anjor', '25dfa8d3ee', 'Classic Nachos', '60', '2', 'paid', '2024-06-19 10:42:36.964796');
 
 -- --------------------------------------------------------
 
@@ -183,17 +152,37 @@ CREATE TABLE `rpos_payments` (
 
 INSERT INTO `rpos_payments` (`pay_id`, `pay_code`, `order_code`, `customer_id`, `pay_amt`, `pay_method`, `created_at`) VALUES
 ('0bf592', '9UMWLG4BF8', 'EJKA-4501', '35135b319ce3', '8', 'Cash', '2022-09-04 16:31:54.525284'),
+('146931', '8MWHINOC24', 'LTUR-9341', '06549ea58afd', '115', 'Online', '2024-06-17 06:27:50.620732'),
+('14d4b7', 'BWTYANDJOF', 'LEQG-3654', '<br />\n<b>Warning</b>:  Undefined variable $customer_id in <b>C:\\xampp\\htdocs\\POS-YellowOwls\\pos\\admin\\pay_order.php</b> on line <b>115</b><br />\n', '173', 'Paypal', '2024-06-13 08:05:02.205523'),
+('264db4', 'HJRIZCEX5F', 'GLBF-0243', 'e711dcc579d9', '43', 'Cash', '2024-06-14 18:32:31.296953'),
+('31e0dc', 'MVRYETUO23', 'JGUZ-3065', '06549ea58afd', '30', 'Online', '2024-06-18 07:21:28.900294'),
+('359100', '2OE1J9SFXU', 'AGON-0465', '9c7fcc067bda', '92', 'Cash', '2024-06-13 08:28:59.428542'),
+('3751f7', '9XRLTYAQG5', 'GALR-5108', '<br />\r\n<b>Warning</b>:  Undefined property: stdClass::$customer_id in <b>C:\\xampp\\htdocs\\POS-YellowOwls\\pos\\admin\\payments.php</b> on line <b>83</b><br />\r\n', '15', 'Cash', '2024-06-11 07:04:22.505573'),
+('411e8c', '1N7K9EX8Q5', 'OYTS-1870', '1fc1f694985d', '158', 'Paypal', '2024-06-13 08:45:03.232947'),
 ('4423d7', 'QWERT0YUZ1', 'JFMB-0731', '35135b319ce3', '11', 'Cash', '2022-09-04 16:37:03.655834'),
 ('442865', '146XLFSC9V', 'INHG-0875', '9c7fcc067bda', '10', 'Paypal', '2022-09-04 16:35:22.470600'),
+('4bec61', 'CMWHAIYEVO', 'XCSO-7528', '47cfca085c88', '168', 'Online', '2024-06-18 06:48:39.228607'),
+('53ba66', '4WR9GOND5A', 'AGON-0465', '9c7fcc067bda', '92', 'Cash', '2024-06-13 08:30:18.855196'),
+('58ac51', '2HJSOT3CMG', 'TQDE-6512', 'd0ba61555aee', '8', 'Cash', '2024-06-08 13:12:26.187231'),
+('5da940', 'KRAIMNYOLJ', 'FYLH-0493', '9e5e95a9010c', '470', 'Online', '2024-06-19 03:38:13.726288'),
 ('5f38d6', 'JYB2DF7U58', 'JEAT-7583', '1fc1f694985d', '6', 'Cash', '2024-05-02 13:56:29.161741'),
 ('65891b', 'MF2TVJA1PY', 'ZPXD-6951', 'e711dcc579d9', '16', 'Cash', '2022-09-03 13:12:46.959558'),
+('6d68b0', '93QDBAFK26', 'BVDN-4671', '35135b319ce3', '15', 'Cash', '2024-06-11 06:48:15.746602'),
+('6f4157', 'W3G278JOKI', 'AGON-0465', '9c7fcc067bda', '92', 'Cash', '2024-06-13 08:34:50.529915'),
+('72891c', '237P8CIF6W', 'AMNR-6584', '27e4a5bc74c2', '240', 'Cash', '2024-06-19 09:11:48.372492'),
 ('75ae21', '1QIKVO69SA', 'IUSP-9453', 'fe6bb69bdd29', '10', 'Cash', '2022-09-03 11:50:40.496625'),
 ('7e1989', 'KLTF3YZHJP', 'QOEH-8613', '29c759d624f9', '9', 'Cash', '2022-09-03 12:02:32.926529'),
 ('968488', '5E31DQ2NCG', 'COXP-6018', '7c8f2100d552', '22', 'Cash', '2022-09-03 12:17:44.639979'),
 ('984539', 'LSBNK1WRFU', 'FNAB-9142', '35135b319ce3', '18', 'Paypal', '2022-09-04 16:32:14.852482'),
+('9e09a1', 'BZAPSFTJLG', 'VELA-4862', '57b7541814ed', '42', 'Cash', '2024-06-08 14:32:18.705911'),
 ('9fcee7', 'AZSUNOKEI7', 'OTEV-8532', '3859d26cd9a5', '15', 'Cash', '2022-09-03 13:13:38.855058'),
+('adab70', 'K3W87SCJZE', 'QFKM-1926', '29c759d624f9', '252', 'Paypal', '2024-06-14 14:26:03.566188'),
+('b780bf', 'V4K3COEBYT', 'YLND-4069', '9e5e95a9010c', '402', 'Paypal', '2024-06-14 20:20:38.759233'),
 ('c81d2e', 'WERGFCXZSR', 'AEHM-0653', '06549ea58afd', '8', 'Cash', '2022-09-03 13:26:00.331494'),
-('e46e29', 'QMCGSNER3T', 'ONSY-2465', '57b7541814ed', '12', 'Cash', '2022-09-03 08:35:50.172062');
+('cf9e07', 'AD6BEYJMOR', 'DEYN-0935', 'fe6bb69bdd29', '176', 'Paypal', '2024-06-14 18:15:58.187105'),
+('e46e29', 'QMCGSNER3T', 'ONSY-2465', '57b7541814ed', '12', 'Cash', '2022-09-03 08:35:50.172062'),
+('e57390', 'TDYWH3FGBV', 'UYLG-1036', '29c759d624f9', '7', 'Paypal', '2024-06-11 06:45:23.329101'),
+('ec7e0d', 'OL5WMGR9H2', 'PFCO-8640', '1da1f018cec0', '230', 'Online', '2024-06-19 10:42:36.963008');
 
 -- --------------------------------------------------------
 
@@ -205,6 +194,7 @@ CREATE TABLE `rpos_products` (
   `prod_id` varchar(200) NOT NULL,
   `prod_code` varchar(200) NOT NULL,
   `prod_name` varchar(200) NOT NULL,
+  `prod_category` varchar(200) NOT NULL,
   `prod_img` varchar(200) NOT NULL,
   `prod_desc` longtext NOT NULL,
   `prod_price` varchar(200) NOT NULL,
@@ -216,53 +206,68 @@ CREATE TABLE `rpos_products` (
 -- Dumping data for table `rpos_products`
 --
 
-INSERT INTO `rpos_products` (`prod_id`, `prod_code`, `prod_name`, `prod_img`, `prod_desc`, `prod_price`, `created_at`, `prod_ing`) VALUES
-('06dc36c1be', 'FCWU-5762', 'Philly Cheesesteak', 'cheesestk.jpg', 'A cheesesteak is a sandwich made from thinly sliced pieces of beefsteak and melted cheese in a long hoagie roll. A popular regional fast food, it has its roots in the U.S. city of Philadelphia, Pennsylvania.', '7', '2022-09-03 11:02:47.738370', ''),
-('0c4b5c0604', 'JRZN-9518', 'Spaghetti Bolognese', 'spaghetti_bolognese.jpg', 'Spaghetti bolognese consists of spaghetti (long strings of pasta) with an Italian ragÃ¹ (meat sauce) made with minced beef, bacon and tomatoes, served with Parmesan cheese. Spaghetti bolognese is one of the most popular pasta dishes eaten outside of Italy.', '15', '2022-09-03 10:43:27.610897', ''),
-('14c7b6370e', 'QZHM-0391', 'Reuben Sandwich', 'reubensandwich.jpg', 'The Reuben sandwich is a North American grilled sandwich composed of corned beef, Swiss cheese, sauerkraut, and Thousand Island dressing or Russian dressing, grilled between slices of rye bread. It is associated with kosher-style delicatessens, but is not kosher because it combines meat and cheese.', '8', '2022-09-03 10:58:04.069144', ''),
-('1e0fa41eee', 'ICFU-1406', 'Submarine Sandwich', 'submarine_sndwh.jpg', 'A submarine sandwich, commonly known as a sub, hoagie, hero, Italian, grinder, wedge, or a spuckie, is a type of American cold or hot sandwich made from a cylindrical bread roll split lengthwise and filled with meats, cheeses, vegetables, and condiments. It has many different names.', '8', '2022-09-03 10:55:23.020144', ''),
-('25f155c5a2', 'SZJA-9436', 'no', '_a8744857-fd11-441f-8eb6-077c93723b66.jpg', 'nnnnn', '78', '2024-06-02 06:48:43.879028', ''),
-('2b976e49a0', 'CEWV-9438', 'Cheeseburger', 'cheeseburgers.jpg', 'A cheeseburger is a hamburger topped with cheese. Traditionally, the slice of cheese is placed on top of the meat patty. The cheese is usually added to the cooking hamburger patty shortly before serving, which allows the cheese to melt. Cheeseburgers can include variations in structure, ingredients and composition.', '3', '2022-09-03 10:45:47.282634', ''),
-('2fdec9bdfb', 'UJAK-9614', 'Jambalaya', 'Jambalaya.jpg', 'Jambalaya is an American Creole and Cajun rice dish of French, African, and Spanish influence, consisting mainly of meat and vegetables mixed with rice.', '9', '2022-09-03 10:48:49.593618', ''),
-('31dfcc94cf', 'SYQP-3710', 'Buffalo Wings', 'buffalo_wings.jpg', 'A Buffalo wing in American cuisine is an unbreaded chicken wing section that is generally deep-fried and then coated or dipped in a sauce consisting of a vinegar-based cayenne pepper hot sauce and melted butter prior to serving.', '11', '2022-09-03 10:51:09.829079', ''),
-('3adfdee116', 'HIPF-5346', 'Enchiladas', 'enchiladas.jpg', 'An enchilada is a corn tortilla rolled around a filling and covered with a savory sauce. Originally from Mexican cuisine, enchiladas can be filled with various ingredients, including meats, cheese, beans, potatoes, vegetables, or combinations', '10', '2022-09-03 12:52:26.427554', ''),
-('3d19e0bf27', 'EMBH-6714', 'Cincinnati Chili', 'cincinnatichili.jpg', 'Cincinnati chili is a Mediterranean-spiced meat sauce used as a topping for spaghetti or hot dogs; both dishes were developed by immigrant restaurateurs in the 1920s. In 2013, Smithsonian named one local chili parlor one of the \"20 Most Iconic Food Destinations in America\".', '9', '2022-09-03 12:57:39.265554', ''),
-('4e68e0dd49', 'QLKW-0914', 'Caramel Macchiato', '', 'Steamed milk, espresso and caramel; what could be more enticing? This blissful flavor is a favorite of coffee lovers due to its deliciously bold taste of creamy caramel and strong coffee flavor. These', '4', '2022-09-03 08:55:51.237667', ''),
-('5d66c79953', 'GOEW-9248', 'Cheese Curd', 'cheesecurd.jpg', 'Cheese curds are moist pieces of curdled milk, eaten either alone or as a snack, or used in prepared dishes. These are chiefly found in Quebec, in the dish poutine, throughout Canada, and in the northeastern, midwestern, mountain, and Pacific Northwestern United States, especially in Wisconsin and Minnesota.', '6', '2022-09-03 11:22:25.639690', ''),
-('826e6f687f', 'AYFW-2683', 'Margherita Pizza', 'margherita-pizza0.jpg', 'Pizza margherita, as the Italians call it, is a simple pizza hailing from Naples. When done right, margherita pizza features a bubbly crust, crushed San Marzano tomato sauce, fresh mozzarella and basil, a drizzle of olive oil, and a sprinkle of salt.', '12', '2022-09-03 08:02:57.213354', ''),
-('97972e8d63', 'CVWJ-6492', 'Irish Coffee', 'irishcoffee.jpg', 'Irish coffee is a caffeinated alcoholic drink consisting of Irish whiskey, hot coffee, and sugar, stirred, and topped with cream The coffee is drunk through the cream', '11', '2022-09-03 13:08:19.157649', ''),
-('a419f2ef1c', 'EPNX-3728', 'Chicken Nugget', 'chicnuggets.jpeg', 'A chicken nugget is a food product consisting of a small piece of deboned chicken meat that is breaded or battered, then deep-fried or baked. Invented in the 1950s, chicken nuggets have become a very popular fast food restaurant item, as well as widely sold frozen for home use', '5', '2022-09-03 12:44:07.749371', ''),
-('a5931158fe', 'ELQN-5204', 'Pulled Pork', 'pulledprk.jpeg', 'Pulled pork is an American barbecue dish, more specifically a dish of the Southern U.S., based on shredded barbecued pork shoulder. It is typically slow-smoked over wood; indoor variations use a slow cooker. The meat is then shredded manually and mixed with a sauce', '8', '2022-09-03 13:04:12.191403', ''),
-('b2f9c250fd', 'XNWR-2768', 'Strawberry Rhubarb Pie', 'rhuharbpie.jpg', 'Rhubarb pie is a pie with a rhubarb filling. Popular in the UK, where rhubarb has been cultivated since the 1600s, and the leaf stalks eaten since the 1700s. Besides diced rhubarb, it almost always contains a large amount of sugar to balance the intense tartness of the plant', '7', '2022-09-03 13:06:28.235333', ''),
-('bd200ef837', 'HEIY-6034', 'Turkish Coffee', 'turkshcoffee.jpg', 'Turkish coffee is a style of coffee prepared in a cezve using very finely ground coffee beans without filtering.', '8', '2022-09-03 13:09:50.234898', ''),
-('cff0cb495a', 'ZOBW-2640', 'Americano', '', 'Many espresso-based drinks use milk, but not the cafÃ© Americano â€“ or simply \'Americano\'. The drink also uses espresso but is infused with hot water instead of milk. The result is a coffee beverage ', '3', '2022-09-03 08:56:18.824990', ''),
-('d57cd89073', 'ZGQW-9480', 'Country Fried Steak', 'country_fried_stk.jpg', 'Chicken-fried steak, also known as country-fried steak or CFS, is an American breaded cutlet dish consisting of a piece of beefsteak coated with seasoned flour and either deep-fried or pan-fried. It is sometimes associated with the Southern cuisine of the United States.', '10', '2022-09-03 11:00:05.523519', ''),
-('d9aed17627', 'FIKD-9703', 'Crab Cake', 'crabcakes.jpg', 'A crab cake is a variety of fishcake that is popular in the United States. It is composed of crab meat and various other ingredients, such as bread crumbs, mayonnaise, mustard, eggs, and seasonings. The cake is then sautÃ©ed, baked, grilled, deep fried, or broiled.', '16', '2022-09-03 12:54:52.120847', ''),
-('e2195f8190', 'HKCR-2178', 'Carbonara', 'carbonaraimgre.jpg', 'Carbonara is an Italian pasta dish from Rome made with eggs, hard cheese, cured pork, and black pepper. The dish arrived at its modern form, with its current name, in the middle of the 20th century. The cheese is usually Pecorino Romano, Parmigiano-Reggiano, or a combination of the two.', '16', '2022-09-03 10:23:06.266420', ''),
-('e2af35d095', 'IDLC-7819', 'Pepperoni Pizza', 'peperopizza.jpg', 'Pepperoni is an American variety of spicy salami made from cured pork and beef seasoned with paprika or other chili pepper. Prior to cooking, pepperoni is characteristically soft, slightly smoky, and bright red. Thinly sliced pepperoni is one of the most popular pizza toppings in American pizzerias.', '7', '2022-09-03 12:49:01.017677', ''),
-('e769e274a3', 'AHRW-3894', 'Frappuccino', 'frappuccino.jpg', 'Frappuccino is a line of blended iced coffee drinks sold by Starbucks. It consists of coffee or crÃ¨me base, blended with ice and ingredients such as flavored syrups and usually topped with whipped cream and or spices.', '3', '2022-09-03 13:11:30.109467', ''),
-('ec18c5a4f0', 'PQFV-7049', 'Corn Dogs', 'corndog.jpg', 'A corn dog is a sausage on a stick that has been coated in a thick layer of cornmeal batter and deep fried. It originated in the United States and is commonly found in American cuisine', '4', '2022-09-03 13:00:32.787354', ''),
-('f4ce3927bf', 'EAHD-1980', 'Hot Dog', 'hotdog0.jpg', 'A hot dog is a food consisting of a grilled or steamed sausage served in the slit of a partially sliced bun. The term hot dog can also refer to the sausage itself. The sausage used is a wiener or a frankfurter. The names of these sausages also commonly refer to their assembled dish.', '4', '2022-09-03 10:53:04.965223', ''),
-('f9c2770a32', 'YXLA-2603', 'Whipped Milk Shake', 'milkshake.jpeg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,', '8', '2022-09-03 08:54:02.727645', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rpos_recipes`
---
-
-CREATE TABLE `rpos_recipes` (
-  `id` int(11) NOT NULL,
-  `product_id` varchar(200) DEFAULT NULL,
-  `ingredient_id` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `rpos_recipes`
---
-
-INSERT INTO `rpos_recipes` (`id`, `product_id`, `ingredient_id`) VALUES
-(17, '1e0fa41eee', '0b8edbcee5');
+INSERT INTO `rpos_products` (`prod_id`, `prod_code`, `prod_name`, `prod_category`, `prod_img`, `prod_desc`, `prod_price`, `created_at`, `prod_ing`) VALUES
+('005018bc24', 'PFGL-5697', 'Chicken Loaded Nachos', 'Nachos', '', 'CLN', '110', '2024-06-19 10:00:49.424913', ''),
+('02d03f9580', 'XURN-5129', 'Veg Club Grilled', 'Sandwiches', '', 'VCG', '110', '2024-06-19 10:28:45.533625', ''),
+('04ead60fa7', 'KUZI-1423', 'Pomegranate Iced Tea', 'Tea', '', 'PIT', '70', '2024-06-19 09:43:46.839992', ''),
+('05a92503aa', 'BFMK-0583', 'Cheesy Fries', 'Fries', '', 'CF', '80', '2024-06-19 10:03:41.471923', ''),
+('06f49aeb71', 'LYJU-4053', 'Veg Bombay Masala Grilled', 'Sandwiches', '', 'VBMG', '70', '2024-06-19 10:25:48.040173', ''),
+('12bef6ac32', 'YQXE-5148', 'Veg PB&J Grilled Sandwich', 'Sandwiches', '', 'VPB&JGS', '70', '2024-06-19 10:29:35.847147', ''),
+('158a5a0783', 'DGCA-4216', 'chicken club griled sandwitch', 'Sandwiches', '', '.', '120', '2024-06-19 11:28:02.631399', ''),
+('189c49a603', 'PLGY-3287', 'Fresh Lime Soda', 'Something Lemony', '', 'FLS', '45', '2024-06-19 09:45:29.721896', ''),
+('1ff98d661a', 'JLUB-0972', 'Veg Coleslaw Cold Sandwich', 'Sandwiches', '', 'VCC', '50', '2024-06-19 10:15:19.690707', ''),
+('21ca6a714b', 'BPTV-7349', 'Veg Club Cold Sandwich', 'Sandwiches', '', 'VCCS', '100', '2024-06-19 10:28:00.950468', ''),
+('22e6674c16', 'MRHS-5390', 'Nonveg Chicken & Mayo Cold Sandwich', 'Sandwiches', '', 'NC&MCS', '70', '2024-06-19 10:32:57.749088', ''),
+('25dfa8d3ee', 'PCXY-5347', 'Classic Nachos', 'Nachos', '', 'CN', '60', '2024-06-19 09:55:54.260426', ''),
+('32d4f07ce3', 'VXYJ-4815', 'Veg Chocolate Grilled Sandwich', 'Sandwiches', '', 'VCGS', '60', '2024-06-19 10:23:22.130249', ''),
+('33c163da19', 'SFDP-5964', 'Cheese', 'Maggie', '', '.', '60', '2024-06-19 11:29:48.932451', ''),
+('34b13720b0', 'JZBV-0218', 'chicken & mayo grilled sandwitch', 'Sandwiches', '', '.', '80', '2024-06-19 11:26:44.297954', ''),
+('353f7db856', 'AQUB-9106', 'Jam & Butter Toast', 'Toasts', '', 'JBT', '50', '2024-06-19 09:48:17.848101', ''),
+('35c0032458', 'HLBD-9054', 'non-veg egg & mayo grilled sandwitch', 'Sandwiches', '', '.', '75', '2024-06-19 11:25:25.135777', ''),
+('44175408e7', 'ZOAL-4629', 'Vegetable', 'Maggie', '', '.', '60', '2024-06-19 11:29:09.848098', ''),
+('4472fa7c96', 'NJAV-5092', 'Veg PB&J Cold Sandwich', 'Sandwiches', '', 'VPB&JCS', '60', '2024-06-19 10:25:13.154121', ''),
+('4facdcb4f9', 'QOIW-4507', 'Nonveg Chicken Coleslaw Cold Sandwich', 'Sandwiches', '', 'NCCCS', '70', '2024-06-19 10:31:14.159427', ''),
+('53295cdef0', 'FCVX-5708', 'chicken club cold sandwitch', 'Sandwiches', '', '.', '110', '2024-06-19 11:27:22.003337', ''),
+('54ee11d447', 'TLFR-5184', 'Nonveg Egg & Mayo Cold Sandwich', 'Sandwiches', '', 'NE&MC', '65', '2024-06-19 10:31:37.198674', ''),
+('54f250b673', 'MOFL-4178', 'Cheese & Corn Nuggets', 'Nuggets', '', 'C&CN', '80', '2024-06-19 10:05:51.795765', ''),
+('5ce2842fc9', 'TMCP-3415', 'Fresh Lime Water', 'Something Lemony', '', 'FLW', '35', '2024-06-19 09:44:35.108846', ''),
+('5edac27e35', 'ATSG-5198', 'Egg (scrambled/fried)', 'Maggie', '', '.', '70', '2024-06-19 11:30:43.234092', ''),
+('6723953c79', 'HAIW-9750', 'Chilli cheese ', 'Garlic Bread', '', '.', '65', '2024-06-19 11:32:17.280799', ''),
+('69a44e44bd', 'IGTM-2401', 'Chicken Fingers Nuggets', 'Nuggets', '', 'CFN', '100', '2024-06-19 10:06:57.428464', ''),
+('6ac2446c8b', 'GVNL-8423', 'Peri Peri Fries', 'Fries', '', 'PPF', '70', '2024-06-19 10:03:03.414631', ''),
+('6b83601144', 'YKLQ-8540', 'Veg Garlic Cheese Grilled Sandwich', 'Sandwiches', '', 'VGC', '70', '2024-06-19 10:26:34.115475', ''),
+('6bdb9e7492', 'TZVQ-7930', 'Lemon Iced Tea', 'Tea', '', 'Lemon Iced Tea', '70', '2024-06-19 09:42:46.882831', ''),
+('6f3c36a563', 'CWHO-1462', 'Chicken Nuggets', 'Nuggets', '', 'CN', '90', '2024-06-19 10:06:17.855502', ''),
+('74aaf05ff8', 'TPXZ-4739', 'Lemonade', 'Something Lemony', '', 'l', '40', '2024-06-19 09:44:58.499589', ''),
+('77cd2246f9', 'OBSY-9387', 'Veg Chilli Cheese Grilled', 'Sandwiches', '', 'VCCG', '60', '2024-06-19 10:24:12.831814', ''),
+('79624ac5a9', 'LPXT-5864', 'Spicy Cheese Nachos', 'Nachos', '', 'SCN', '75', '2024-06-19 09:59:44.604029', ''),
+('7af9a58d44', 'MVGB-4769', 'Non-veg Cajun chicken grilled sandwitch', 'Sandwiches', '', '.', '90', '2024-06-19 11:24:27.853545', ''),
+('829d1b0900', 'UMOK-0196', 'Chicken Loaded Fries', 'Fries', '', 'CLF', '110', '2024-06-19 10:05:08.364447', ''),
+('8e23aebda6', 'DJHA-4259', 'Whole Wheat Bread', 'Add-ons', '', 'wheat Bread', '10', '2024-06-18 05:05:18.941820', ''),
+('8edbb205e4', 'SZIC-8269', 'Veg Classic Cold Sandwich', 'Sandwiches', '', 'VCC', '50', '2024-06-19 10:15:42.196029', ''),
+('9599a2c620', 'PIHV-8423', 'cheesy Nachos', 'Nachos', '', 'CCN', '70', '2024-06-19 09:56:21.181687', ''),
+('9c70bd1680', 'AGKJ-2810', 'Classic', 'Maggie', '', '.', '50', '2024-06-19 11:28:44.465035', ''),
+('9db276b248', 'XRCU-3597', 'Fish Fingers Nuggets', 'Nuggets', '', 'FFN', '110', '2024-06-19 10:07:36.012196', ''),
+('a13517006a', 'ANCG-2157', 'Vegetable cheese', 'Maggie', '', '.', '65', '2024-06-19 11:30:13.108097', ''),
+('a485cb09c0', 'PMXW-5012', 'Butter Toast', 'Toasts', '', 'BT', '40', '2024-06-19 09:47:51.239613', ''),
+('b827459346', 'KYWQ-4569', 'Veg Loaded Fries', 'Fries', '', 'VLF', '90', '2024-06-19 10:04:40.920079', ''),
+('bd200ef837', 'HEIY-6034', 'Turkish Coffee', '', 'turkshcoffee.jpg', 'Turkish coffee is a style of coffee prepared in a cezve using very finely ground coffee beans without filtering.', '8', '2022-09-03 13:09:50.234898', ''),
+('be085c83d7', 'MFEH-6397', 'Veg Classic Grilled Sandwich', 'Sandwiches', '', 'VCG', '60', '2024-06-19 10:15:59.223548', ''),
+('c3e9fb8807', 'UITK-0718', 'Spicy Cheese Fries', 'Fries', '', 'SCF', '90', '2024-06-19 10:04:12.930626', ''),
+('cc9a85c5b6', 'PXHB-8902', 'Veg Coleslaw Grilled Sandwich', 'Sandwiches', '', 'NCG', '60', '2024-06-19 10:16:12.285233', ''),
+('ccd76234b7', 'PNTR-1328', 'Veg Chocolate Cold Sandwich', 'Sandwiches', '', 'VCC', '50', '2024-06-19 10:16:24.771342', ''),
+('cea98599bc', 'VPOX-4956', 'Classic Fries', 'Fries', '', 'CF', '60', '2024-06-19 10:02:00.260776', ''),
+('cf658d541e', 'YUGO-8279', 'Peach Iced Tea', 'Tea', '', 'Peach Iced Tea', '70', '2024-06-19 09:43:14.700312', ''),
+('d1c85b8fe0', 'SYJA-2859', 'chicken colslaw grilled sandwitch', 'Sandwiches', '', '.', '80', '2024-06-19 11:26:04.951674', ''),
+('dd48b08854', 'VDBC-9850', 'Vanilla milk Shake', 'Milk Shakes', '', 'VMS', '110', '2024-06-19 09:46:16.229179', ''),
+('ddcf1a051e', 'MERG-5017', 'Veg Loaded Nachos', 'Nachos', '', 'VLN', '90', '2024-06-19 10:00:18.467032', ''),
+('e3e8cfe291', 'EYJF-4065', 'Chocolate milk shake', 'Milk Shakes', '', 'CMS', '110', '2024-06-19 09:46:48.903280', ''),
+('e792e14c0d', 'UFAL-4651', 'Cheese', 'Garlic Bread', '', 'Cheese Garlic Bread', '60', '2024-06-18 04:50:58.795775', ''),
+('ebba70fe28', 'CRAL-5702', 'Non-veg Cajun chicken cold sandwitch', 'Sandwiches', '', '.', '80', '2024-06-19 11:23:58.862929', ''),
+('ee63695abf', 'ECQF-5029', 'Veg Cheese Spinach & Corn Grilled Sandwich', 'Sandwiches', '', 'VCS&CGS', '80', '2024-06-19 10:27:20.371682', ''),
+('f59dbf4e31', 'SZFW-3604', 'Classic', 'Garlic Bread', '', 'Classic Garlic Bread', '50', '2024-06-18 04:47:02.046304', ''),
+('f9c2770a32', 'YXLA-2603', 'Whipped Milk Shake', 'Beverages', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,', '8', '2024-06-13 06:49:38.945728', ''),
+('fe64b29c08', 'RGAO-0286', 'PB&J Toast', 'Toasts', '', 'PB&J', '60', '2024-06-19 10:35:44.841236', '');
 
 -- --------------------------------------------------------
 
@@ -284,7 +289,7 @@ CREATE TABLE `rpos_staff` (
 --
 
 INSERT INTO `rpos_staff` (`staff_id`, `staff_name`, `staff_number`, `staff_email`, `staff_password`, `created_at`) VALUES
-(2, 'Cashier James', 'QEUY-9042', 'cashier@mail.com', '10470c3b4b1fed12c3baac014be15fac67c6e815', '2022-09-12 10:13:37.930915');
+(2, 'Cashier James', 'QEUY-9042', 'cashier@mail.com', '1f82ea75c5cc526729e2d581aeb3aeccfef4407e', '2024-06-18 05:09:04.072664');
 
 --
 -- Indexes for dumped tables
@@ -301,12 +306,6 @@ ALTER TABLE `rpos_admin`
 --
 ALTER TABLE `rpos_customers`
   ADD PRIMARY KEY (`customer_id`);
-
---
--- Indexes for table `rpos_ingredients`
---
-ALTER TABLE `rpos_ingredients`
-  ADD PRIMARY KEY (`ing_id`);
 
 --
 -- Indexes for table `rpos_orders`
@@ -336,14 +335,6 @@ ALTER TABLE `rpos_products`
   ADD PRIMARY KEY (`prod_id`);
 
 --
--- Indexes for table `rpos_recipes`
---
-ALTER TABLE `rpos_recipes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `rpos_recipes_ibfk_1` (`ingredient_id`),
-  ADD KEY `rpos_recipes_ibfk_2` (`product_id`);
-
---
 -- Indexes for table `rpos_staff`
 --
 ALTER TABLE `rpos_staff`
@@ -358,12 +349,6 @@ ALTER TABLE `rpos_staff`
 --
 ALTER TABLE `rpos_pass_resets`
   MODIFY `reset_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `rpos_recipes`
---
-ALTER TABLE `rpos_recipes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `rpos_staff`
@@ -381,13 +366,6 @@ ALTER TABLE `rpos_staff`
 ALTER TABLE `rpos_orders`
   ADD CONSTRAINT `CustomerOrder` FOREIGN KEY (`customer_id`) REFERENCES `rpos_customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ProductOrder` FOREIGN KEY (`prod_id`) REFERENCES `rpos_products` (`prod_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `rpos_recipes`
---
-ALTER TABLE `rpos_recipes`
-  ADD CONSTRAINT `rpos_recipes_ibfk_1` FOREIGN KEY (`ingredient_id`) REFERENCES `rpos_ingredients` (`ing_id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `rpos_recipes_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `rpos_products` (`prod_id`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -27,7 +27,7 @@ require_once ('partials/_head.php');
     <!-- Page content -->
     <div class="container-fluid mt--8">
       <!-- Two-column layout -->
-      <div class="row">
+      <div class="row display-4">
         <!-- Available Products -->
         <div class="col-md-6">
           <div class="card shadow">
@@ -39,7 +39,7 @@ require_once ('partials/_head.php');
             </div>
             <div class="table-responsive">
               <form id="product-selection-form" method="POST" action="make_order.php">
-                <table class="table align-items-center table-flush">
+                <table class="table table-hover align-items-center table-flush">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col"><b>Image</b></th>
@@ -77,8 +77,8 @@ require_once ('partials/_head.php');
                           <tr class='product-row $category_id' data-prod-id='$prod->prod_id' data-prod-code='$prod->prod_code' data-prod-name='$prod->prod_name' data-prod-price='$prod->prod_price'>
                             <td><img src='assets/img/products/" . ($prod->prod_img ? $prod->prod_img : 'default.jpg') . "' height='60' width='60' class='img-thumbnail'></td>
                             <td>$prod->prod_code</td>
-                            <td>$prod->prod_name</td>
-                            <td>₹ $prod->prod_price</td>
+                            <td><h4>$prod->prod_name</h4></td>
+                            <td><h3>₹ $prod->prod_price</h3></td>
                           </tr>
                         ";
                       }
@@ -95,8 +95,8 @@ require_once ('partials/_head.php');
                         <tr class='product-row Other' data-prod-id='$prod->prod_id' data-prod-code='$prod->prod_code' data-prod-name='$prod->prod_name' data-prod-price='$prod->prod_price'>
                           <td><img src='assets/img/products/" . ($prod->prod_img ? $prod->prod_img : 'default.jpg') . "' height='60' width='60' class='img-thumbnail'></td>
                           <td>$prod->prod_code</td>
-                          <td>$prod->prod_name</td>
-                          <td>₹ $prod->prod_price</td>
+                          <td><h4>$prod->prod_name</h4></td>
+                            <td><h3>₹ $prod->prod_price</h3></td>
                         </tr>
                       ";
                     }
@@ -184,9 +184,9 @@ require_once ('partials/_head.php');
           $('#selected-products tbody').append(`
             <tr data-prod-id="${productId}">
               <td>${prodCode}</td>
-              <td>${prodName}</td>
-              <td>₹ ${prodPrice}</td>
-              <td class="quantity">1</td>
+              <td><h4 class='text-danger'>${prodName}</h4></td>
+              <td><h3>₹ ${prodPrice}</h3></td>
+              <td class="quantity text-success">1</td>
             </tr>
           `);
         }
@@ -232,6 +232,7 @@ require_once ('partials/_head.php');
       });
     });
   </script>
+  
 </body>
 
 </html>

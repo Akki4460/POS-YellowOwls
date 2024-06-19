@@ -31,8 +31,8 @@ require_once('partials/_head.php');
                         <div class="card-header border-0">
                             Paid Orders
                         </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
+                        <div class="table-responsive  p-3 ">
+                            <table id="example" class="table align-items-center table-flush ">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Order Code</th>
@@ -58,9 +58,9 @@ require_once('partials/_head.php');
                                     ?>
                                     <tr>
                                         <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
-                                        <td><?php echo $order->customer_name; ?></td>
-                                        <td><?php echo $order->products; ?></td>
-                                        <td>₹ <?php echo $order->total_price; ?></td>
+                                        <td style="font-size:0.8rem;"><?php echo $order->customer_name; ?></td>
+                                        <td style="font-weight:bold; font-size:0.9rem;"><?php echo $order->products; ?></td>
+                                        <td style="font-weight:bold; font-size:0.9rem;">₹<?php echo $order->total_price; ?></td>
                                         <td><?php
                                             if ($order->order_status == '') {
                                                 echo "<span class='badge badge-danger'>Not Paid</span>";
@@ -92,6 +92,25 @@ require_once('partials/_head.php');
     </div>
     <!-- Argon Scripts -->
     <?php require_once('partials/_scripts.php'); ?>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-html5-1.6.1/b-print-1.6.1/r-2.2.3/datatables.min.js"></script>
+
+      <script>
+      $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'frtip',
+                oLanguage: {
+                    oPaginate: {
+                        sNext: '<span class="pagination-fa"><i class="fa fa-chevron-right" ></i></span>',
+                        sPrevious: '<span class="pagination-fa"><i class="fa fa-chevron-left" ></i></span>'
+                    }
+                }
+      } );
+  } );
+  </script>
 </body>
 
 </html>

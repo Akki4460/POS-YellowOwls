@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>POS System</title>
+    <title>YellowOwl POS</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -23,7 +23,7 @@
         }
 
         .full-height {
-            height: 100vh;
+            height: 80vh;
         }
 
         .flex-center {
@@ -63,6 +63,17 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #000;
+            color: #636b6f;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -82,6 +93,13 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="footer-content text-center text-muted">
+            <p>&copy; 2024 The EagleWings. All rights reserved.</p>
+            <p>Contact: eaglewingsads@gmail.com | +91 8483832208 / 8847727212</p>
+        </div>
+    </footer>
 </body>
+
 
 </html>

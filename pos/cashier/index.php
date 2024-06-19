@@ -28,7 +28,7 @@ require_once('partials/_head.php');
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Point Of Sale Management System</h1>
+              <h1 class="text-white">Cashier Login</h1>
             </div>
           </div>
         </div>
@@ -83,6 +83,12 @@ require_once('partials/_head.php');
   <?php
   require_once('partials/_footer.php');
   ?>
+  <footer>
+    <div class="footer-content text-center text-muted">
+    <!-- <p>&copy; 2024 The EagleWings. All rights reserved.</p> -->
+    <p>Contact: eaglewingsads@gmail.com | +91 8483832208 / 8847727212</p>
+    </div>
+  </footer>
   <!-- Argon Scripts -->
   <?php
   require_once('partials/_scripts.php');

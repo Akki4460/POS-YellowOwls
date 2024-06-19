@@ -9,14 +9,14 @@ while ($admin = $res->fetch_object()) {
 
 ?>
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
-    <div class="container-fluid">
+    <div class="container-fluid display-3">
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="dashboard.php">
-        <img src="assets/img/brand/repos.png" class="navbar-brand-img" alt="...">
+        <img src="assets/img/brand/repos.jpg" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -58,7 +58,7 @@ while ($admin = $res->fetch_object()) {
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="dashboard.php">
-                <img src="assets/img/brand/repos.png">
+                <img src="assets/img/brand/repos.jpg">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -99,7 +99,7 @@ while ($admin = $res->fetch_object()) {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="orders.php">
-              <i class="ni ni-cart text-primary"></i> Orders
+              <i class="fas fa-concierge-bell text-primary"></i> Orders
             </a>
           </li>
           <li class="nav-item">

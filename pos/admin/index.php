@@ -84,6 +84,12 @@ require_once('partials/_head.php');
   <?php
   require_once('partials/_footer.php');
   ?>
+  <footer>
+    <div class="footer-content text-center text-muted">
+    <!-- <p>&copy; 2024 The EagleWings. All rights reserved.</p> -->
+    <p>Contact: eaglewingsads@gmail.com | +91 8483832208 / 8847727212</p>
+    </div>
+  </footer>
   <!-- Argon Scripts -->
   <?php
   require_once('partials/_scripts.php');

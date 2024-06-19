@@ -20,7 +20,7 @@ while ($admin = $res->fetch_object()) {
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="assets/img/theme/user-a-min.png">
+                                <img alt="C" src="assets/img/theme/user-a-min.png">
                             </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold"><?php echo $admin->admin_name; ?></span>

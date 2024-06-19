@@ -42,7 +42,7 @@ require_once('partials/_head.php');
     <!-- Page content -->
     <div class="container-fluid mt--8">
       <!-- Table -->
-      <div class="row">
+      <div class="row display-3">
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
@@ -70,7 +70,7 @@ require_once('partials/_head.php');
                   while ($cust = $res->fetch_object()) {
                   ?>
                     <tr>
-                      <td><?php echo $cust->customer_name; ?></td>
+                      <td><h4><?php echo $cust->customer_name; ?></h4></td>
                       <td><?php echo $cust->customer_phoneno; ?></td>
                       <td><?php echo $cust->customer_email; ?></td>
                       <td>
